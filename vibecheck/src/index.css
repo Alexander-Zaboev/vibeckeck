@@ -1,0 +1,107 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 230 15% 8%;
+  --foreground: 0 0% 95%;
+  --card: 230 15% 12%;
+  --primary: 24 100% 58%;
+  --secondary: 230 12% 18%;
+  --muted: 230 10% 16%;
+  --muted-foreground: 230 10% 55%;
+  --accent: 340 80% 58%;
+  --border: 230 12% 20%;
+  --ring: 24 100% 58%;
+  --radius: 1rem;
+  --reddit-orange: 16 100% 50%;
+  --youtube-red: 0 100% 50%;
+  --gradient-sunset-from: 30 100% 60%;
+  --gradient-sunset-via: 15 100% 55%;
+  --gradient-sunset-to: 350 85% 55%;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer components {
+  .glass-card {
+    background: hsl(230 15% 14% / 0.5);
+    border-radius: 1.5rem;
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    backdrop-filter: blur(24px);
+  }
+
+  .glass-nav {
+    background: hsl(230 15% 14% / 0.4);
+    border-radius: 999px;
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    backdrop-filter: blur(40px);
+  }
+
+  .text-gradient-sunset {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-sunset-from)),
+      hsl(var(--gradient-sunset-via)),
+      hsl(var(--gradient-sunset-to))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-gradient-sunset {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-sunset-from)),
+      hsl(var(--gradient-sunset-via)),
+      hsl(var(--gradient-sunset-to))
+    );
+  }
+
+  .ambient-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  .ambient-glow::before,
+  .ambient-glow::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+  }
+  .ambient-glow::before {
+    width: 600px;
+    height: 600px;
+    background: hsl(var(--gradient-sunset-from));
+    top: -150px;
+    right: -100px;
+  }
+  .ambient-glow::after {
+    width: 500px;
+    height: 500px;
+    background: hsl(var(--gradient-sunset-to));
+    bottom: -120px;
+    left: -100px;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-glow {
+    animation: pulse-glow 2.4s ease-in-out infinite;
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease forwards;
+  }
+}
